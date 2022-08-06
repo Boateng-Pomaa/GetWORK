@@ -29,13 +29,17 @@ export default function Home() {
         <p>Create account</p>
       </header>
       <div className={styles.card}>
-        <form method="POST" onSubmit={onSubmitHandler}>
-          <div className={styles.toggle_wrapper}>
-            <button className={styles.toggle}>Login</button>
-            <button className={`${styles.toggle} ${styles.active}`}>
-              Signup
-            </button>
-          </div>
+        <div className={styles.toggle_wrapper}>
+          <button className={styles.toggle}>Login</button>
+          <button className={`${styles.toggle} ${styles.active}`}>
+            Signup
+          </button>
+        </div>
+        <form
+          className={styles.form_wrapper}
+          method="POST"
+          onSubmit={onSubmitHandler}
+        >
           <div className={styles.input_group}>
             <label htmlFor={FORM_FIELDS.USERNAME}>{FORM_FIELDS.USERNAME}</label>
             <input type="text" id={FORM_FIELDS.USERNAME} />
@@ -48,22 +52,22 @@ export default function Home() {
             <label htmlFor={FORM_FIELDS.PASSWORD}>{FORM_FIELDS.PASSWORD}</label>
             <input type="text" id={FORM_FIELDS.PASSWORD} />
           </div>
+          <button
+            type="submit"
+            className={styles.button_solid}
+            onClick={clickHandler}
+          >
+            Create account
+          </button>
+          <div className={styles.footer}>
+            <p>
+              Already have an account?{' '}
+              <button className={styles.button} onClick={clickHandler}>
+                Login
+              </button>
+            </p>
+          </div>
         </form>
-        <button type="submit" className={styles.button} onClick={clickHandler}>
-          Create account
-        </button>
-        <div>
-          <p>
-            Already have an account?
-            <button
-              type="submit"
-              className={styles.button}
-              onClick={clickHandler}
-            >
-              Login
-            </button>
-          </p>
-        </div>
       </div>
     </div>
   );

@@ -6,8 +6,8 @@
   justify-content: center;
   flex-direction: column;
   /* gap: var(--128px); */
-  height: 60vh;
-  width: 50vw;
+  /* height: 60vh; */
+  /* width: 50vw; */
   padding: var(--16px);
   position: absolute;
   top: 50%;
@@ -23,6 +23,7 @@
   /* height: 400px; */
   border-radius: 20px; /* !! */
   padding: 20px; /* !! */
+  padding: 16px; /* !! */
 }
 
 .input_group {
@@ -33,20 +34,19 @@
 }
 
 .input_group label {
-  font-size: 16px; /* !! */
-  margin-bottom: 20px; /* !!! */
+  font-size: var(--14px);
+  padding: var(--8px);
 }
 
 .input_group input {
-  font-size: 16px; /* !! */
-  border-radius: 50px; /* !!! */
+  font-size: var(--16px);
+  border-radius: 100vmax;
   border: 1px solid yellow; /* !!! */
-  padding: 10px; /* !!! */
+  padding: var(--10px);
 }
 
 .input_group input:focus {
   border: 1px solid palegreen; /* !!! */
-
   background-color: green;
 }
 
@@ -57,39 +57,60 @@
 }
 
 .header h1 {
-  font-size: 50px;
-  margin-bottom: var(--24px); /* !! */
+  font-size: var(--42px);
+  margin-bottom: var(--24px);
 }
 
 .toggle_wrapper {
   width: 100%;
   display: flex;
-  background-color: burlywood;
 }
 
 .toggle {
+  cursor: pointer;
   font-family: inherit;
   font-size: var(--16px);
-  background-color: red; /* !! */
   border: 0;
-  border-bottom: 1px solid green; /* !! */
   margin-top: var(--20px);
   padding-bottom: var(--20px);
   flex-basis: 50%;
 }
 
 .toggle.active {
-  border-bottom: 1px solid yellow;
+  border-bottom: 2px solid red;
+}
+
+.button_solid {
+  /* font-family: inherit; */
+  font-size: var(--16px);
+  border-radius: 100vmax;
+  width: 100%;
+  padding: var(--16px);
+  text-transform: uppercase;
+  transition: background-color 200ms ease-in;
+}
+
+.button_solid:hover {
+  /* !! USE MEDIA QUERY */
+  background-color: red; /* !!! */
 }
 
 .button {
+  cursor: pointer;
   font-family: inherit;
-  font-size: 16px; /* !!!! */
-  background-color: aqua;
-  border-radius: 50px; /* !!! */
-  width: 100%;
-  padding: 50px; /* !!! */
-  text-transform: uppercase;
+  font-size: var(--16px);
+  border: 0;
+  background-color: aliceblue; /* !!! */
+}
+
+.footer {
+  margin-top: var(--20px);
+  text-align: center;
+  font-size: var(--14px);
+}
+
+.footer button {
+  font-size: var(--14px);
 }
 
 @font-face {
