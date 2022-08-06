@@ -37,6 +37,7 @@ html {
 
 button {
   font-family: inherit;
+  background-color: transparent;
   cursor: pointer;
   border: 0;
 }

@@ -21,11 +21,11 @@ export default function Home() {
   return (
     <div className={styles.wrapper}>
       <Head>
-        <title>Linda Pomaa</title>
-        {/* <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> */}
+        <title>App</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
       </Head>
       <header className={styles.header}>
-        <h1>App name</h1>
+        <h1>App</h1>
         <p>Create account</p>
       </header>
       <div className={styles.card}>
