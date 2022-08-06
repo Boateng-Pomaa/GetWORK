@@ -30,10 +30,12 @@ export default function Home() {
       </header>
       <div className={styles.card}>
         <form method="POST" onSubmit={onSubmitHandler}>
-          <header>
+          <div className={styles.toggle_wrapper}>
             <button className={styles.toggle}>Login</button>
-            <button className={styles.toggle}>Signup</button>
-          </header>
+            <button className={`${styles.toggle} ${styles.active}`}>
+              Signup
+            </button>
+          </div>
           <div className={styles.input_group}>
             <label htmlFor={FORM_FIELDS.USERNAME}>{FORM_FIELDS.USERNAME}</label>
             <input type="text" id={FORM_FIELDS.USERNAME} />

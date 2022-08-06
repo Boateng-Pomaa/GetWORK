@@ -1,6 +1,11 @@
 :root {
   /* Wrapper */
-  --wrapper: 5vw;
+  --wrapper: var(--32px);
+
+  /* Colors */
+  --dark: #521524;
+  --light: #FFFFF;
+  --white: #FFFFF;
 
   /* Responsive units */
   --8px: calc(8 / 16 * 1rem);
@@ -31,7 +36,7 @@ html {
 body {
   background-color: cadetblue;
   height: 100%;
-  font-family: Segoe UI;
+  font-family: 'Neue Haas Display';
 }
 
 a {

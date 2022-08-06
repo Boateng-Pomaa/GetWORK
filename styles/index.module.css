@@ -13,11 +13,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  /* margin-inline: var(--wrapper); */
 }
 
 .card {
   background-color: paleturquoise;
-
+  width: 600px;
+  width: calc(400 / 16 * 1rem);
+  /* height: 400px; */
   border-radius: 20px; /* !! */
   padding: 20px; /* !! */
 }
@@ -49,24 +52,56 @@
 
 .header {
   background-color: palegoldenrod;
-  margin-bottom: 50px; /* !! */
+  margin-bottom: var(--24px);
+  text-align: center;
 }
 
 .header h1 {
   font-size: 50px;
-  margin-bottom: 50px; /* !! */
+  margin-bottom: var(--24px); /* !! */
+}
+
+.toggle_wrapper {
+  width: 100%;
+  display: flex;
+  background-color: burlywood;
 }
 
 .toggle {
-  background-color: red;
+  font-family: inherit;
+  font-size: var(--16px);
+  background-color: red; /* !! */
   border: 0;
-  border-bottom: 1px solid green;
-  margin-block: 20px; /* !! */
+  border-bottom: 1px solid green; /* !! */
+  margin-top: var(--20px);
+  padding-bottom: var(--20px);
+  flex-basis: 50%;
+}
+
+.toggle.active {
+  border-bottom: 1px solid yellow;
 }
 
 .button {
+  font-family: inherit;
+  font-size: 16px; /* !!!! */
   background-color: aqua;
   border-radius: 50px; /* !!! */
   width: 100%;
   padding: 50px; /* !!! */
+  text-transform: uppercase;
+}
+
+@font-face {
+  font-family: 'Neue Haas Display';
+  src: url('../assets/NeueHaasDisplay-Roman.woff2');
+  font-display: swap; /* //! CHECk */
+}
+
+@font-face {
+  font-family: 'Neue Haas Display';
+  src: url('../assets/NeueHaasDisplay-Bold.woff2');
+  font-weight: 700;
+  font-display: swap; /* //! CHECk */
+  /* //! ADD MIME TYPE */
 }
