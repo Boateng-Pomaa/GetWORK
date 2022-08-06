@@ -1,0 +1,72 @@
+.wrapper {
+  background-color: greenyellow;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* gap: var(--128px); */
+  height: 60vh;
+  width: 50vw;
+  padding: var(--16px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card {
+  background-color: paleturquoise;
+
+  border-radius: 20px; /* !! */
+  padding: 20px; /* !! */
+}
+
+.input_group {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  margin-block: 20px; /* !! */
+}
+
+.input_group label {
+  font-size: 16px; /* !! */
+  margin-bottom: 20px; /* !!! */
+}
+
+.input_group input {
+  font-size: 16px; /* !! */
+  border-radius: 50px; /* !!! */
+  border: 1px solid yellow; /* !!! */
+  padding: 10px; /* !!! */
+}
+
+.input_group input:focus {
+  border: 1px solid palegreen; /* !!! */
+
+  background-color: green;
+}
+
+.header {
+  background-color: palegoldenrod;
+  margin-bottom: 50px; /* !! */
+}
+
+.header h1 {
+  font-size: 50px;
+  margin-bottom: 50px; /* !! */
+}
+
+.toggle {
+  background-color: red;
+  border: 0;
+  border-bottom: 1px solid green;
+  margin-block: 20px; /* !! */
+}
+
+.button {
+  background-color: aqua;
+  border-radius: 50px; /* !!! */
+  width: 100%;
+  padding: 50px; /* !!! */
+}
