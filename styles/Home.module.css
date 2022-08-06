@@ -1,15 +1,17 @@
-.main {
+.card {
   background-color: mintcream;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   /* gap: var(--128px); */
-  height: 50vh;
-  width: 60vw;
+  height: 60vh;
+  width: 50vw;
   padding: var(--16px);
   position: absolute;
-  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .input_group {

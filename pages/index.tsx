@@ -1,6 +1,7 @@
 // import type { NextPage } from 'next';
 // import Head from 'next/head';
 // import Image from 'next/image';
+import { useRef, useState } from 'react';
 import styles from '../styles/Home.module.css';
 // import styles from './index.module.css';
 
@@ -11,12 +12,22 @@ export default function Home() {
     PASSWORD: 'password',
   });
 
+  const [input, setInput] = useState('');
+
+  const inputRef = useRef();
   //! Use typescript enums
 
+  const onSubmitHandler = (event) => event.preventDefault(); //! TYPES
+
+  const clickHandler = () => console.log('Clicked'); //! TYPES
+
   return (
-    <main className={styles.main}>
-      <h1>Create account</h1>
-      <div>
+    <div className={styles.card}>
+      <header>
+        <button>Login</button>
+        <button>Signup</button>
+      </header>
+      <form method="POST" onSubmit={onSubmitHandler}>
         <div className={styles.input_group}>
           <label htmlFor={FORM_FIELDS.USERNAME}>{FORM_FIELDS.USERNAME}</label>
           <input type="text" id={FORM_FIELDS.USERNAME} />
@@ -29,13 +40,15 @@ export default function Home() {
           <label htmlFor={FORM_FIELDS.PASSWORD}>{FORM_FIELDS.PASSWORD}</label>
           <input type="text" id={FORM_FIELDS.PASSWORD} />
         </div>
-      </div>
-      <button className="button">Create account</button>
+      </form>
+      <button type="submit" className="button" onClick={clickHandler}>
+        Create account
+      </button>
       <div>
         <p>
           Already have an account? <a href="#">Login</a>
         </p>
       </div>
-    </main>
+    </div>
   );
 }
