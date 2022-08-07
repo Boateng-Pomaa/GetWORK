@@ -105,6 +105,16 @@
   margin-top: 16px; /* //! CHECK */
 }
 
+.button_solid.disabled {
+  cursor: not-allowed;
+  background-color: var(--gray-light-2);
+  color: var(--gray-dark);
+}
+
+.button_solid.disabled:hover {
+  background-color: var(--gray-light-2);
+}
+
 .button_solid:hover {
   /* !! USE MEDIA QUERY */
   background-color: #44a7fb; /* !!! */

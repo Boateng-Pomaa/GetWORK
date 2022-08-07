@@ -15,20 +15,14 @@ export default function Home() {
 
   const toggleHandler = (event) => {
     setActiveTab(event.target.id);
-  };
+  }; //! TYPES
 
   const FORM_FIELDS = Object.freeze({
     USERNAME: 'username',
     EMAIL: 'email',
     PASSWORD: 'password',
   });
-  //! Use typescript enums
-
-  const [input, setInput] = useState({
-    username: '',
-    email: '',
-    password: '',
-  });
+  //! Ofui! use typescript enums
 
   const inputRef = useRef().current;
 
@@ -60,7 +54,6 @@ export default function Home() {
         setUserInput((prevState) => {
           return { ...prevState, email: event.target.value };
         });
-
         console.log(userInput);
         break;
 
@@ -69,7 +62,6 @@ export default function Home() {
         setUserInput((prevState) => {
           return { ...prevState, password: event.target.value };
         });
-
         console.log(userInput);
         break;
     }
@@ -77,8 +69,17 @@ export default function Home() {
 
   const formHandler = (event) => event.preventDefault(); //! TYPES
 
+  const payload = {
+    method: 'POST',
+    body: JSON.stringify(userInput),
+    headers: { 'Content-Type': 'application/json' },
+  };
+
   const loginHandler = () => {
-    fetch('http://localhost:4000', { body: userInput })
+    console.log(userInput);
+
+    /* 🔥🔥 Put the signup endpoint here 🔥🔥*/
+    fetch('', payload)
       .then((data) => {
         console.log(data);
       })
@@ -88,7 +89,10 @@ export default function Home() {
   };
 
   const signupHandler = () => {
-    fetch('http://localhost:4000')
+    console.log(userInput);
+
+    /* 🔥🔥 Put the signup endpoint here 🔥🔥*/
+    fetch('', payload)
       .then((data) => {
         console.log(data);
       })
@@ -162,7 +166,9 @@ export default function Home() {
           {activeTab === 'login' ? (
             <button
               type="submit"
-              className={styles.button_solid}
+              className={`${styles.button_solid} ${
+                disableButton ? styles.disabled : ''
+              }`}
               onClick={loginHandler}
               disabled={disableButton && true}
             >
@@ -171,7 +177,9 @@ export default function Home() {
           ) : (
             <button
               type="submit"
-              className={styles.button_solid}
+              className={`${styles.button_solid} ${
+                disableButton ? styles.disabled : ''
+              }`}
               onClick={signupHandler}
               disabled={disableButton && true}
             >
