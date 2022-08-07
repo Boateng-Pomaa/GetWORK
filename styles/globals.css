@@ -3,9 +3,17 @@
   --wrapper: var(--32px);
 
   /* Colors */
-  --dark: #521524;
-  --light: #FFFFF;
-  --white: #FFFFF;
+  --dark: #262626;
+  --gray-light: #f7f7f7;
+  --gray-light-2: #cdcbcb;
+  --gray-dark: #969696;
+  --light: #ffffff;
+  --primary: #0085ff;
+  --primary-light: #e5f3ff;
+  --warning: #f89f37;
+  --warning-light: #fff5e8;
+  --success: #23c350;
+  --success-light: #e5f8eb;
 
   /* Responsive units */
   --8px: calc(8 / 16 * 1rem);
@@ -42,10 +50,15 @@ button {
   border: 0;
 }
 
+li {
+  list-style-type: none;
+}
+
 body {
   background-color: cadetblue;
   height: 100%;
   font-family: 'Neue Haas Display';
+  background-color: var(--gray-light);
 }
 
 a {
@@ -56,3 +69,16 @@ a {
 label {
   text-transform: capitalize;
 }
+
+/* THINGS TO ADD
+
+1. DEFAuLT BOX SHADOW
+2. SCROLL BAr EDITS
+3. UTLITY CLASSS
+4. COLORS 
+
+USE INTER AS DEFAILT FONT
+
+UPLOAD THIS TO NPM
+
+*/

@@ -1,5 +1,5 @@
 .wrapper {
-  background-color: greenyellow;
+  /* background-color: greenyellow; */
 
   display: flex;
   align-items: center;
@@ -17,20 +17,22 @@
 }
 
 .card {
-  background-color: paleturquoise;
+  background-color: var(--light);
   width: 600px;
   width: calc(400 / 16 * 1rem);
   /* height: 400px; */
   border-radius: 20px; /* !! */
   padding: 20px; /* !! */
   padding: 16px; /* !! */
+  padding: 32px; /* !! */
+
+  box-shadow: 20px 20px 20px 20px rgba(0, 0, 0, 0.5);
 }
 
 .input_group {
-  background-color: red;
   display: flex;
   flex-direction: column;
-  margin-block: 20px; /* !! */
+  margin-block: var(--16px);
 }
 
 .input_group label {
@@ -41,17 +43,21 @@
 .input_group input {
   font-size: var(--16px);
   border-radius: 100vmax;
+  border-radius: 10px;
   border: 1px solid yellow; /* !!! */
+  border: 1px solid var(--gray-dark); /* !!! */
   padding: var(--10px);
+  transition: all 1s ease-in;
 }
 
 .input_group input:focus {
-  border: 1px solid palegreen; /* !!! */
-  background-color: green;
+  /* background-color: green; */
+  border: 2px solid var(--primary); /* !!! */
+  outline: 4px solid var(--primary-light);
 }
 
 .header {
-  background-color: palegoldenrod;
+  /* background-color: palegoldenrod; */
   margin-bottom: var(--24px);
   text-align: center;
 }
@@ -74,25 +80,33 @@
   margin-top: var(--20px);
   padding-bottom: var(--20px);
   flex-basis: 50%;
+  border-bottom: 3px solid var(--gray-light-2);
+  color: var(--gray-light-2);
 }
 
 .toggle.active {
-  border-bottom: 2px solid red;
+  border-bottom: 3px solid var(--primary);
+  color: var(--dark);
 }
 
 .button_solid {
   /* font-family: inherit; */
   font-size: var(--16px);
   border-radius: 100vmax;
+  border-radius: 10px;
   width: 100%;
   padding: var(--16px);
   text-transform: uppercase;
   transition: background-color 200ms ease-in;
+  background-color: var(--primary);
+  color: var(--light);
+
+  margin-top: 16px; /* //! CHECK */
 }
 
 .button_solid:hover {
   /* !! USE MEDIA QUERY */
-  background-color: red; /* !!! */
+  background-color: #44a7fb; /* !!! */
 }
 
 .button {
@@ -100,7 +114,6 @@
   font-family: inherit;
   font-size: var(--16px);
   border: 0;
-  background-color: aliceblue; /* !!! */
 }
 
 .footer {
@@ -111,6 +124,7 @@
 
 .footer button {
   font-size: var(--14px);
+  color: var(--primary);
 }
 
 @font-face {

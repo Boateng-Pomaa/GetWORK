@@ -1,6 +1,8 @@
-import Head from 'next/head';
-import { useRef, useState } from 'react';
 import styles from '../styles/index.module.css';
+
+import { useRef, useState } from 'react';
+
+import Head from 'next/head';
 
 export default function Home() {
   const FORM_FIELDS = Object.freeze({
@@ -28,7 +30,7 @@ export default function Home() {
         <h1>App</h1>
         <p>Create account</p>
       </header>
-      <div className={styles.card}>
+      <main className={styles.card}>
         <div className={styles.toggle_wrapper}>
           <button className={styles.toggle}>Login</button>
           <button className={`${styles.toggle} ${styles.active}`}>
@@ -46,11 +48,11 @@ export default function Home() {
           </div>
           <div className={styles.input_group}>
             <label htmlFor={FORM_FIELDS.EMAIL}>{FORM_FIELDS.EMAIL}</label>
-            <input type="text" id={FORM_FIELDS.EMAIL} />
+            <input type="email" id={FORM_FIELDS.EMAIL} />
           </div>
           <div className={styles.input_group}>
             <label htmlFor={FORM_FIELDS.PASSWORD}>{FORM_FIELDS.PASSWORD}</label>
-            <input type="text" id={FORM_FIELDS.PASSWORD} />
+            <input type="password" id={FORM_FIELDS.PASSWORD} />
           </div>
           <button
             type="submit"
@@ -59,16 +61,16 @@ export default function Home() {
           >
             Create account
           </button>
-          <div className={styles.footer}>
+          {/* <div className={styles.footer}>
             <p>
               Already have an account?{' '}
               <button className={styles.button} onClick={clickHandler}>
                 Login
               </button>
             </p>
-          </div>
+          </div> */}
         </form>
-      </div>
+      </main>
     </div>
   );
 }
