@@ -5,20 +5,97 @@ import { useRef, useState } from 'react';
 import Head from 'next/head';
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState('signup');
+  const [disableButton, setDisableButton] = useState(true);
+  const [userInput, setUserInput] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+
+  const toggleHandler = (event) => {
+    setActiveTab(event.target.id);
+  };
+
   const FORM_FIELDS = Object.freeze({
     USERNAME: 'username',
     EMAIL: 'email',
     PASSWORD: 'password',
   });
-
-  const [input, setInput] = useState('');
-
-  const inputRef = useRef();
   //! Use typescript enums
 
-  const onSubmitHandler = (event) => event.preventDefault(); //! TYPES
+  const [input, setInput] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
 
-  const clickHandler = () => console.log('Clicked'); //! TYPES
+  const inputRef = useRef().current;
+
+  function inputHander(event) {
+    console.log('Hello');
+
+    // Enables button
+    if (
+      userInput.username !== '' &&
+      userInput.email !== '' &&
+      userInput.password !== ''
+    ) {
+      setDisableButton(false);
+      console.log('🤩🤩🤩🤩');
+    }
+
+    // Gets values from input fields
+    switch (event.target.id) {
+      case 'username':
+        console.log('Username field');
+        setUserInput((prevState) => {
+          return { ...prevState, username: event.target.value };
+        });
+        console.log(userInput);
+        break;
+
+      case 'email':
+        console.log('Email field');
+        setUserInput((prevState) => {
+          return { ...prevState, email: event.target.value };
+        });
+
+        console.log(userInput);
+        break;
+
+      case 'password':
+        console.log('Email field');
+        setUserInput((prevState) => {
+          return { ...prevState, password: event.target.value };
+        });
+
+        console.log(userInput);
+        break;
+    }
+  }
+
+  const formHandler = (event) => event.preventDefault(); //! TYPES
+
+  const loginHandler = () => {
+    fetch('http://localhost:4000', { body: userInput })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const signupHandler = () => {
+    fetch('http://localhost:4000')
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -26,49 +103,81 @@ export default function Home() {
         <title>App</title>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
       </Head>
-      <header className={styles.header}>
-        <h1>App</h1>
-        <p>Create account</p>
-      </header>
       <main className={styles.card}>
         <div className={styles.toggle_wrapper}>
-          <button className={styles.toggle}>Login</button>
-          <button className={`${styles.toggle} ${styles.active}`}>
+          <button
+            id="login"
+            type="button"
+            className={`${styles.toggle} ${
+              activeTab === 'login' ? styles.active : ''
+            }`}
+            onClick={toggleHandler}
+          >
+            Login
+          </button>
+          <button
+            id="signup"
+            type="button"
+            className={`${styles.toggle} ${
+              activeTab === 'signup' ? styles.active : ''
+            }`}
+            onClick={toggleHandler}
+          >
             Signup
           </button>
         </div>
-        <form
-          className={styles.form_wrapper}
-          method="POST"
-          onSubmit={onSubmitHandler}
-        >
-          <div className={styles.input_group}>
-            <label htmlFor={FORM_FIELDS.USERNAME}>{FORM_FIELDS.USERNAME}</label>
-            <input type="text" id={FORM_FIELDS.USERNAME} />
-          </div>
+        <form method="POST" onSubmit={formHandler}>
+          {activeTab === 'signup' && (
+            <div className={styles.input_group}>
+              <label htmlFor={FORM_FIELDS.USERNAME}>
+                {FORM_FIELDS.USERNAME}
+              </label>
+              <input
+                type="text"
+                id={FORM_FIELDS.USERNAME}
+                required
+                ref={inputRef}
+                onChange={inputHander}
+              />
+            </div>
+          )}
           <div className={styles.input_group}>
             <label htmlFor={FORM_FIELDS.EMAIL}>{FORM_FIELDS.EMAIL}</label>
-            <input type="email" id={FORM_FIELDS.EMAIL} />
+            <input
+              type="email"
+              id={FORM_FIELDS.EMAIL}
+              required
+              onChange={inputHander}
+            />
           </div>
           <div className={styles.input_group}>
             <label htmlFor={FORM_FIELDS.PASSWORD}>{FORM_FIELDS.PASSWORD}</label>
-            <input type="password" id={FORM_FIELDS.PASSWORD} />
+            <input
+              type="password"
+              id={FORM_FIELDS.PASSWORD}
+              required
+              onChange={inputHander}
+            />
           </div>
-          <button
-            type="submit"
-            className={styles.button_solid}
-            onClick={clickHandler}
-          >
-            Create account
-          </button>
-          {/* <div className={styles.footer}>
-            <p>
-              Already have an account?{' '}
-              <button className={styles.button} onClick={clickHandler}>
-                Login
-              </button>
-            </p>
-          </div> */}
+          {activeTab === 'login' ? (
+            <button
+              type="submit"
+              className={styles.button_solid}
+              onClick={loginHandler}
+              disabled={disableButton && true}
+            >
+              Login
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className={styles.button_solid}
+              onClick={signupHandler}
+              disabled={disableButton && true}
+            >
+              Create account
+            </button>
+          )}
         </form>
       </main>
     </div>
