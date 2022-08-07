@@ -1,6 +1,6 @@
 import styles from '../styles/index.module.css';
 
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import Head from 'next/head';
 
@@ -13,92 +13,81 @@ export default function Home() {
     password: '',
   });
 
-  const toggleHandler = (event) => {
-    setActiveTab(event.target.id);
-  }; //! TYPES
-
-  const FORM_FIELDS = Object.freeze({
-    USERNAME: 'username',
-    EMAIL: 'email',
-    PASSWORD: 'password',
-  });
-  //! Ofui! use typescript enums
-
-  const inputRef = useRef().current;
-
-  function inputHander(event) {
-    console.log('Hello');
-
-    // Enables button
-    if (
-      userInput.username !== '' &&
-      userInput.email !== '' &&
-      userInput.password !== ''
-    ) {
-      setDisableButton(false);
-      console.log('🤩🤩🤩🤩');
-    }
-
-    // Gets values from input fields
-    switch (event.target.id) {
-      case 'username':
-        console.log('Username field');
-        setUserInput((prevState) => {
-          return { ...prevState, username: event.target.value };
-        });
-        console.log(userInput);
-        break;
-
-      case 'email':
-        console.log('Email field');
-        setUserInput((prevState) => {
-          return { ...prevState, email: event.target.value };
-        });
-        console.log(userInput);
-        break;
-
-      case 'password':
-        console.log('Email field');
-        setUserInput((prevState) => {
-          return { ...prevState, password: event.target.value };
-        });
-        console.log(userInput);
-        break;
-    }
-  }
-
-  const formHandler = (event) => event.preventDefault(); //! TYPES
-
   const payload = {
     method: 'POST',
     body: JSON.stringify(userInput),
     headers: { 'Content-Type': 'application/json' },
   };
 
-  const loginHandler = () => {
-    console.log(userInput);
+  enum FORM_FIELDS {
+    USERNAME = 'username',
+    EMAIL = 'email',
+    PASSWORD = 'password',
+  }
 
-    /* 🔥🔥 Put the signup endpoint here 🔥🔥*/
-    fetch('', payload)
-      .then((data) => {
-        console.log(data);
+  /**************************
+   *        HANDLERS        *
+   **************************/
+  function inputHander(event: React.ChangeEvent<HTMLInputElement>) {
+    // Enables button
+    if (
+      (userInput.username !== '' || userInput.email !== '') &&
+      userInput.password !== ''
+    ) {
+      setDisableButton(false);
+    }
+
+    // Gets values from input fields
+    switch (event.currentTarget.id) {
+      case 'username':
+        setUserInput((prevState) => {
+          return { ...prevState, username: event.target.value };
+        });
+
+        break;
+
+      case 'email':
+        setUserInput((prevState) => {
+          return { ...prevState, email: event.target.value };
+        });
+
+        break;
+
+      case 'password':
+        setUserInput((prevState) => {
+          return { ...prevState, password: event.target.value };
+        });
+
+        break;
+    }
+  }
+
+  function formHandler(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+  }
+
+  const loginHandler = () => {
+    fetch('🔥🔥 Put the login endpoint here 🔥🔥', payload)
+      .then((res) => {
+        console.log(res);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
       });
   };
 
   const signupHandler = () => {
-    console.log(userInput);
-
-    /* 🔥🔥 Put the signup endpoint here 🔥🔥*/
-    fetch('', payload)
-      .then((data) => {
-        console.log(data);
+    fetch('🔥🔥 Put the signup endpoint here 🔥🔥', payload)
+      .then((res) => {
+        console.log(res);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
       });
+  };
+
+  const toggleHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setActiveTab(event.currentTarget.id);
   };
 
   return (
@@ -140,7 +129,6 @@ export default function Home() {
                 type="text"
                 id={FORM_FIELDS.USERNAME}
                 required
-                ref={inputRef}
                 onChange={inputHander}
               />
             </div>
